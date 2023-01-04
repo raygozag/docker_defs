@@ -36,7 +36,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt install apt-utils
 RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt install r-base -y  libcurl4-openssl-dev libssl-dev  libxml2-dev libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev libfontconfig1-dev libharfbuzz-dev libfribidi-dev 
 
 
-RUN DEBIAN_FRONTEND=noninteractive apt install file -y default-jre
+RUN DEBIAN_FRONTEND=noninteractive apt install file -y default-jre git
 
 #RUN pkg-config
 RUN Rscript -e 'install.packages("devtools")'
@@ -47,3 +47,10 @@ RUN Rscript -e 'devtools::install_github("joey711/phyloseq")'
 RUN Rscript -e 'devtools::install_github("nhanhocu/metamicrobiomeR")'
 
 RUN Rscript -e 'devtools::install_github("egeulgen/pathfindR")'
+
+RUN Rscript -e 'install.packages(c("RcppEigen","RcppArmadillo","ggsci") )'
+
+
+COPY stsiRay /root/stsiRay
+
+RUN cd /root/ && ls && R CMD INSTALL stsiRay
