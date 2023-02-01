@@ -48,7 +48,7 @@ RUN Rscript -e 'devtools::install_github("nhanhocu/metamicrobiomeR")'
 
 RUN Rscript -e 'devtools::install_github("egeulgen/pathfindR")'
 
-RUN Rscript -e 'install.packages(c("RcppEigen","RcppArmadillo","ggsci") )'
+RUN Rscript -e 'install.packages(c("RcppEigen","RcppArmadillo","ggsci","ggpubr") )'
 
 
 COPY stsiRay /root/stsiRay
